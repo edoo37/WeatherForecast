@@ -1,6 +1,6 @@
 package com.yasinsenel.weatherforecast.model
 
-data class WeathetResponseModel(
+data class WeatherResponseModel(
     val base: String,
     val clouds: Clouds,
     val cod: Int,
