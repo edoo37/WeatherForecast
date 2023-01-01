@@ -1,6 +1,7 @@
 package com.yasinsenel.weatherforecast.di
 
 import com.yasinsenel.weatherforecast.service.WeatherAPI
+import com.yasinsenel.weatherforecast.utils.Constats
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +19,7 @@ object AppModule {
     fun injectRetrofit() : WeatherAPI{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("http://api.openweathermap.org/")
+            .baseUrl(Constats.BASE_URL)
             .build()
             .create(WeatherAPI::class.java)
     }
