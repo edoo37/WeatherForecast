@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -30,9 +31,10 @@ class MainScreenFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       weatherViewModel.getWeatherData("istanbul")
+        weatherViewModel.getWeatherData("istanbul")
 
         weatherViewModel.weatherDataResponse.observe(viewLifecycleOwner){
             it?.let {
@@ -41,6 +43,12 @@ class MainScreenFragment : Fragment() {
                 weatherResponseModel = it
                 setView()
             }
+        }
+        binding.edtextSearch.setOnClickListener {
+
+        }
+        binding.edtextSearch.addTextChangedListener {
+           weatherViewModel.refreshWeatherData(it.toString())
         }
     }
 

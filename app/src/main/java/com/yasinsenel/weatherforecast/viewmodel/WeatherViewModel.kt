@@ -16,6 +16,10 @@ class WeatherViewModel @Inject constructor(private val repository: WeatherReposi
 
     val weatherDataResponse =MutableLiveData<WeatherResponseModel?>()
 
+    fun refreshWeatherData(cityName: String){
+        getWeatherData(cityName)
+    }
+
     fun getWeatherData(cityName : String) {
         viewModelScope.launch {
             val result = repository.getWeatherResponse(cityName)
