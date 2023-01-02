@@ -7,6 +7,7 @@
     tools:context=".MainScreenFragment">
 
 
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="wrap_content"
@@ -22,22 +23,23 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:paddingStart="15dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="10dp"
-        android:text="İL'İ GİRİNİZ:"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="İl giriniz"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:maxLines="1"
+            android:inputType="text|textAutoComplete|textAutoCorrect|textCapSentences"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_alignParentBottom="true"/>
 
     <TextView
+        android:id="@+id/tv_temp_degree"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:text="12 C"
@@ -56,6 +58,7 @@
         android:gravity="center"/>
 
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="KASTAMONU"
@@ -244,5 +247,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
