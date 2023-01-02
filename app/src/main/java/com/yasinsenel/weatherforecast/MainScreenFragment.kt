@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.yasinsenel.weatherforecast.databinding.FragmentMainScreenBinding
-import com.yasinsenel.weatherforecast.model.model2.WeatherResponseModel
 import com.yasinsenel.weatherforecast.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
