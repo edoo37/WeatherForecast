@@ -49,6 +49,7 @@
         android:gravity="center"/>
 
     <ImageView
+        android:id="@+id/iv_weather_icon"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:src="@drawable/ic_gunesli_yagmurlu"
@@ -67,12 +68,14 @@
         android:layout_marginTop="120dp"/>
 
     <TextView
+        android:id="@+id/tv_weather_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AÇIK"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="120dp"/>
     <TextView
+        android:id="@+id/tv_weather_main_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
