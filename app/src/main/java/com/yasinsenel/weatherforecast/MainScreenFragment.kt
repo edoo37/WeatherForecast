@@ -47,13 +47,24 @@ class MainScreenFragment : Fragment() {
     fun setView(){
         binding.apply {
             tvName.setText(weatherResponseModel.name)
-            tvTempDegree.setText(weatherResponseModel.main?.temp.toString())
+            tvTempDegree.text = weatherResponseModel.main?.temp.toString() + " °C"
             tvWeatherMain.setText(weatherResponseModel.weather?.get(0)?.main)
             tvWeatherMainDesc.setText(weatherResponseModel.weather?.get(0)?.description)
             Glide.with(requireContext())
                 .load("https://openweathermap.org/img/wn/" + weatherResponseModel.weather?.get(0)?.icon+"@2x.png")
                 .into(ivWeatherIcon)
-        }
+            tvTemp.text = "Sıcaklık : " + weatherResponseModel.main?.temp.toString() + " °C"
+            tvFeelsTemp.text = "Hissedilen Sıcaklık : " + weatherResponseModel.main?.feels_like.toString() + " °C"
+            tvMaxTemp.text = "Maksimum Sıcaklık : " + weatherResponseModel.main?.temp_max.toString() + " °C"
+            tvMinTemp.text = "Minimum Sıcaklık : " + weatherResponseModel.main?.temp_min.toString() + " °C"
+            tvPressure.text = "Basınç : " + weatherResponseModel.main?.pressure.toString() + " hPa"
+            tvHumidity.text = "Nem : " + weatherResponseModel.main?.humidity.toString() + " %"
+            tvSeaLevel.text = "Deniz Seviyesi : " + weatherResponseModel.main?.sea_level.toString() + " hPa"
+            tvGrndLevel.text = "Yer Seviyesi : " + weatherResponseModel.main?.grnd_level.toString() + " hPa"
+            tvWindSpeed.text = "Rüzgar Hızı : " + weatherResponseModel.wind?.speed.toString() + " m/sn"
+            tvWindDegree.text = "Rüzgar Yönü : " + weatherResponseModel.wind?.deg.toString() + "derece"
+            tvCloudy.text = "Bulut Yüzdesi : " + weatherResponseModel.clouds?.all.toString() + " %"
+         }
     }
 
 }
