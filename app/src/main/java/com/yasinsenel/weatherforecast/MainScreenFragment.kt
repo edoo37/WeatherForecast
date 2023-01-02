@@ -7,11 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.yasinsenel.weatherforecast.databinding.FragmentMainScreenBinding
-import com.yasinsenel.weatherforecast.model.WeatherResponseModel
+import com.yasinsenel.weatherforecast.model.model2.WeatherResponseModel
 import com.yasinsenel.weatherforecast.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,14 +33,14 @@ class MainScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        weatherViewModel.getWeatherData("istanbul")
+        weatherViewModel.getWeatherData("London")
 
         weatherViewModel.weatherDataResponse.observe(viewLifecycleOwner){
             it?.let {
                 Toast.makeText(requireContext(),"Basarılı",Toast.LENGTH_SHORT).show()
-                println(it.name)
+                println(it.current?.last_updated)
                 weatherResponseModel = it
-                setView()
+                //setView()
             }
         }
         binding.edtextSearch.setOnClickListener {
@@ -52,7 +51,7 @@ class MainScreenFragment : Fragment() {
         }
     }
 
-    fun setView(){
+    /*fun setView(){
         binding.apply {
             tvName.setText(weatherResponseModel.name)
             tvTempDegree.text = weatherResponseModel.main?.temp.toString() + " °C"
@@ -73,6 +72,6 @@ class MainScreenFragment : Fragment() {
             tvWindDegree.text = "Rüzgar Yönü : " + weatherResponseModel.wind?.deg.toString() + "derece"
             tvCloudy.text = "Bulut Yüzdesi : " + weatherResponseModel.clouds?.all.toString() + " %"
          }
-    }
+    }*/
 
 }

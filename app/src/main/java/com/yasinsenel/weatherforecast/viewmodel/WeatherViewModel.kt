@@ -3,7 +3,7 @@ package com.yasinsenel.weatherforecast.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yasinsenel.weatherforecast.model.WeatherResponseModel
+import com.yasinsenel.weatherforecast.model.model2.WeatherResponseModel
 import com.yasinsenel.weatherforecast.repository.WeatherRepository
 import com.yasinsenel.weatherforecast.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

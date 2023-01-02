@@ -1,5 +1,5 @@
 package com.yasinsenel.weatherforecast.model
 
-data class Clouds(
-    val all: Int
+data class Alerts(
+    val alert: List<Any>
 )

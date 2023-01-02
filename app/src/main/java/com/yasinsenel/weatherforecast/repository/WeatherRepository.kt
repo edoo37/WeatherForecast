@@ -1,6 +1,6 @@
 package com.yasinsenel.weatherforecast.repository
 
-import com.yasinsenel.weatherforecast.model.WeatherResponseModel
+import com.yasinsenel.weatherforecast.model.model2.WeatherResponseModel
 import com.yasinsenel.weatherforecast.service.WeatherAPI
 import com.yasinsenel.weatherforecast.utils.Resource
 import javax.inject.Inject
