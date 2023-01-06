@@ -1,16 +1,20 @@
 package com.yasinsenel.weatherforecast
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
 import com.yasinsenel.weatherforecast.databinding.FragmentMainScreenBinding
+import com.yasinsenel.weatherforecast.model.WeatherResponseModel
 import com.yasinsenel.weatherforecast.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 @AndroidEntryPoint
@@ -31,45 +35,48 @@ class MainScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        weatherViewModel.getWeatherData("London")
+        weatherViewModel.getWeatherData("istanbul")
 
         weatherViewModel.weatherDataResponse.observe(viewLifecycleOwner){
             it?.let {
                 Toast.makeText(requireContext(),"Basarılı",Toast.LENGTH_SHORT).show()
                 println(it.current?.last_updated)
                 weatherResponseModel = it
-                //setView()
+                setView()
             }
         }
-        binding.edtextSearch.setOnClickListener {
+       /* binding.edtextSearch.setOnClickListener {
 
         }
         binding.edtextSearch.addTextChangedListener {
            weatherViewModel.refreshWeatherData(it.toString())
-        }
+        }*/
     }
 
-    /*fun setView(){
+    fun setView(){
         binding.apply {
-            tvName.setText(weatherResponseModel.name)
-            tvTempDegree.text = weatherResponseModel.main?.temp.toString() + " °C"
-            tvWeatherMain.setText(weatherResponseModel.weather?.get(0)?.main)
-            tvWeatherMainDesc.setText(weatherResponseModel.weather?.get(0)?.description)
+
+            val dtStart = "2010-10-15"
+            val format = SimpleDateFormat("yyyy-MM-dd")
+            try {
+                val date: Date = format.parse(dtStart)
+                System.out.println(date)
+            } catch (e: ParseException) {
+                e.printStackTrace()
+            }
+
+            tvCityName.text = weatherResponseModel.location?.name
+            tvCountry.text = weatherResponseModel.location?.country
+            tvCurrentTemp.text = weatherResponseModel.current?.temp_c.toString() + " °C"
             Glide.with(requireContext())
-                .load("https://openweathermap.org/img/wn/" + weatherResponseModel.weather?.get(0)?.icon+"@2x.png")
+                .load("https:"+weatherResponseModel.current?.condition?.icon)
                 .into(ivWeatherIcon)
-            tvTemp.text = "Sıcaklık : " + weatherResponseModel.main?.temp.toString() + " °C"
-            tvFeelsTemp.text = "Hissedilen Sıcaklık : " + weatherResponseModel.main?.feels_like.toString() + " °C"
-            tvMaxTemp.text = "Maksimum Sıcaklık : " + weatherResponseModel.main?.temp_max.toString() + " °C"
-            tvMinTemp.text = "Minimum Sıcaklık : " + weatherResponseModel.main?.temp_min.toString() + " °C"
-            tvPressure.text = "Basınç : " + weatherResponseModel.main?.pressure.toString() + " hPa"
-            tvHumidity.text = "Nem : " + weatherResponseModel.main?.humidity.toString() + " %"
-            tvSeaLevel.text = "Deniz Seviyesi : " + weatherResponseModel.main?.sea_level.toString() + " hPa"
-            tvGrndLevel.text = "Yer Seviyesi : " + weatherResponseModel.main?.grnd_level.toString() + " hPa"
-            tvWindSpeed.text = "Rüzgar Hızı : " + weatherResponseModel.wind?.speed.toString() + " m/sn"
-            tvWindDegree.text = "Rüzgar Yönü : " + weatherResponseModel.wind?.deg.toString() + "derece"
-            tvCloudy.text = "Bulut Yüzdesi : " + weatherResponseModel.clouds?.all.toString() + " %"
+            tvWindStatus2.text = weatherResponseModel.current?.wind_kph.toString() + " km/h"
+            tvHumidityStatus2.text = weatherResponseModel.current?.humidity.toString() + " %"
+            tvAirPressureStatus2.text = weatherResponseModel.current?.pressure_mb.toString() + " mbar"
+            tvVisibilityStatus2.text = weatherResponseModel.current?.vis_km.toString() + " km"
+            weatherResponseModel.forecast?.forecastday?.get(1)?.day?.condition?.icon
          }
-    }*/
+    }
 
 }
