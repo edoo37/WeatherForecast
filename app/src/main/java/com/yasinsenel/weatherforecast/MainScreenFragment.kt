@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.yasinsenel.weatherforecast.adapter.WeatherAdapter
 import com.yasinsenel.weatherforecast.databinding.FragmentMainScreenBinding
+import com.yasinsenel.weatherforecast.model.Forecastday
 import com.yasinsenel.weatherforecast.model.WeatherResponseModel
 import com.yasinsenel.weatherforecast.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +26,9 @@ class MainScreenFragment : Fragment() {
     private val weatherViewModel : WeatherViewModel by viewModels()
 
     private var weatherResponseModel =  WeatherResponseModel()
+    private var weatherAdapter = WeatherAdapter()
+
+    private val weatherList : ArrayList<Forecastday> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,35 +41,42 @@ class MainScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        weatherViewModel.getWeatherData("istanbul")
+
+       initAdapter()
+
+       weatherViewModel.getWeatherData("istanbul")
 
         weatherViewModel.weatherDataResponse.observe(viewLifecycleOwner){
             it?.let {
                 Toast.makeText(requireContext(),"Basarılı",Toast.LENGTH_SHORT).show()
                 println(it.current?.last_updated)
                 weatherResponseModel = it
-                setView()
-            }
-        }
-       /* binding.edtextSearch.setOnClickListener {
+                println(it)
 
+            }
+            setView()
+            fetchList()
         }
-        binding.edtextSearch.addTextChangedListener {
-           weatherViewModel.refreshWeatherData(it.toString())
-        }*/
+
+
+
+        /* binding.edtextSearch.setOnClickListener {
+
+         }
+         binding.edtextSearch.addTextChangedListener {
+            weatherViewModel.refreshWeatherData(it.toString())
+         }*/
+
     }
+
 
     fun setView(){
         binding.apply {
-
-            val dtStart = "2010-10-15"
-            val format = SimpleDateFormat("yyyy-MM-dd")
-            try {
-                val date: Date = format.parse(dtStart)
-                System.out.println(date)
-            } catch (e: ParseException) {
-                e.printStackTrace()
-            }
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale("tr"))
+            val date = sdf.parse(weatherResponseModel.location!!.localtime)
+            sdf.applyPattern("EEE, MMMM d, yyyy")
+            val str = sdf.format(date)
+            tvDay.text = str
 
             tvCityName.text = weatherResponseModel.location?.name
             tvCountry.text = weatherResponseModel.location?.country
@@ -77,6 +90,21 @@ class MainScreenFragment : Fragment() {
             tvVisibilityStatus2.text = weatherResponseModel.current?.vis_km.toString() + " km"
             weatherResponseModel.forecast?.forecastday?.get(1)?.day?.condition?.icon
          }
+    }
+    fun initAdapter(){
+        binding.apply {
+            recyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+            recyclerView.adapter = weatherAdapter
+        }
+    }
+
+    private fun fetchList(){
+        weatherResponseModel?.let {
+            it.forecast?.forecastday?.forEach {
+                weatherList.add(it)
+            }
+        }
+        weatherAdapter.setList(weatherList)
     }
 
 }

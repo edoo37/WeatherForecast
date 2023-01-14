@@ -43,6 +43,7 @@
             android:layout_height="100dp"
             android:text="12 oC"
             android:textSize="60sp"
+            android:textColor="@color/black"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@id/iv_weather_icon"
@@ -52,179 +53,6 @@
 
     </RelativeLayout>
 
-
-
-
-
-<!--
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview1"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/relativeLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="315dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
-
-            <TextView
-                android:id="@+id/tv_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sıcaklık"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_feels_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hissedilen Sıcaklık"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_temp" />
-
-            <TextView
-                android:id="@+id/tv_max_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Maksimum Sıcaklık"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_feels_temp"/>
-
-            <TextView
-                android:id="@+id/tv_min_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Minimum Sıcaklık"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_max_temp"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview2"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview1"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteX="500dp"
-        tools:layout_editor_absoluteY="500dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
-
-            <TextView
-                android:id="@+id/tv_pressure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Basınç"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_humidity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nem"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_pressure" />
-
-            <TextView
-                android:id="@+id/tv_sea_level"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Deniz Seviyesi"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_humidity"/>
-
-            <TextView
-                android:id="@+id/tv_grnd_level"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yer Seviyesesi"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_sea_level"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardview3"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardview2"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteX="500dp"
-        tools:layout_editor_absoluteY="500dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
-
-            <TextView
-                android:id="@+id/tv_wind_speed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rüzgar Hızı"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_wind_degree"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rüzgar Derecesi"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_wind_speed" />
-
-            <TextView
-                android:id="@+id/tv_cloudy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bulutluluk Yüzdesi"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_wind_degree"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView> -->
 
     <ImageView
         android:id="@+id/imageView"
@@ -362,6 +190,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_air_pressure_status"
         app:layout_constraintTop_toBottomOf="@id/tv_air_pressure_status" />
+
+
+    <TextView
+        android:id="@+id/tv_next_5days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sonraki 5 Gün"
+        app:layout_constraintTop_toBottomOf="@id/tv_humidity_status2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_next_5days">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
