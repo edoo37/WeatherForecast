@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(private val api : WeatherAPI) {
 
-    suspend fun getWeatherResponse(cityName : String) : Resource<WeatherResponseModel>{
+    suspend fun getWeatherResponse(cityName : String?) : Resource<WeatherResponseModel>{
         val response =try{
             api.getData(cityName)
         }

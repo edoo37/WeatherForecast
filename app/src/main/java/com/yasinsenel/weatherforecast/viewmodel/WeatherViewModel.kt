@@ -20,7 +20,7 @@ class WeatherViewModel @Inject constructor(private val repository: WeatherReposi
         getWeatherData(cityName)
     }
 
-    fun getWeatherData(cityName : String) {
+    fun getWeatherData(cityName : String?) {
         viewModelScope.launch {
             val result = repository.getWeatherResponse(cityName)
             when(result){

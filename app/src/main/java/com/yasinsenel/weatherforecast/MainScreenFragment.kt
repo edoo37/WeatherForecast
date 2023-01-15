@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.yasinsenel.weatherforecast.adapter.WeatherAdapter
@@ -18,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 @AndroidEntryPoint
@@ -43,8 +45,19 @@ class MainScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
        initAdapter()
+        var getData : String? = null
+        val bundleData = arguments
+        getData = bundleData?.getString("City")
 
-       weatherViewModel.getWeatherData("istanbul")
+
+       binding.ivSearch.setOnClickListener {
+           Navigation.findNavController(view).navigate(R.id.action_mainScreenFragment_to_searchFragment)
+       }
+
+        weatherViewModel.getWeatherData(getData?:"kastamonu")
+
+
+
 
         weatherViewModel.weatherDataResponse.observe(viewLifecycleOwner){
             it?.let {
@@ -99,6 +112,7 @@ class MainScreenFragment : Fragment() {
     }
 
     private fun fetchList(){
+        weatherList.clear()
         weatherResponseModel?.let {
             it.forecast?.forecastday?.forEach {
                 weatherList.add(it)

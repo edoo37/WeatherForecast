@@ -9,5 +9,18 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.yasinsenel.weatherforecast.MainScreenFragment"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" />
+        tools:layout="@layout/fragment_main_screen" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.yasinsenel.weatherforecast.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
 </navigation>
