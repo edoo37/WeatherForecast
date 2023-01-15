@@ -38,7 +38,8 @@ class SearchFragment : Fragment() {
         list.add(R.drawable.ic_person_umbrella)
         list.add(R.drawable.ic_umbrella_girl)
 
-        binding.imageView2.setImageResource(list.get(Random.nextInt(list.size)))
+        val calculate = list.get(Random.nextInt(list.size))
+        binding.imageView2.setImageResource(calculate)
 
 
         binding.apply {

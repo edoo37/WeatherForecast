@@ -71,14 +71,9 @@ class MainScreenFragment : Fragment() {
             fetchList()
         }
 
-
-
-        /* binding.edtextSearch.setOnClickListener {
-
-         }
-         binding.edtextSearch.addTextChangedListener {
+         binding.ivSearch.setOnClickListener {
             weatherViewModel.refreshWeatherData(it.toString())
-         }*/
+         }
 
     }
 
