@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.orhanobut.hawk.Hawk
 import com.yasinsenel.weatherforecast.adapter.WeatherAdapter
 import com.yasinsenel.weatherforecast.databinding.FragmentMainScreenBinding
 import com.yasinsenel.weatherforecast.model.Forecastday
@@ -44,36 +45,38 @@ class MainScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       initAdapter()
-        var getData : String? = null
+        Hawk.init(requireContext()).build()
+
+        initAdapter()
+        /*var getData : String? = null
         val bundleData = arguments
-        getData = bundleData?.getString("City")
+        getData = bundleData?.getString("City")*/
+
+        var cityName : String = Hawk.get("City", "kastamonu")
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            weatherViewModel.refreshWeatherData(cityName)
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
 
 
        binding.ivSearch.setOnClickListener {
            Navigation.findNavController(view).navigate(R.id.action_mainScreenFragment_to_searchFragment)
        }
 
-        weatherViewModel.getWeatherData(getData?:"kastamonu")
-
-
-
+        weatherViewModel.getWeatherData(cityName)
 
         weatherViewModel.weatherDataResponse.observe(viewLifecycleOwner){
             it?.let {
                 Toast.makeText(requireContext(),"Basarılı",Toast.LENGTH_SHORT).show()
                 println(it.current?.last_updated)
                 weatherResponseModel = it
-                println(it)
+                println(it.location?.name)
 
             }
             setView()
             fetchList()
         }
-
-         binding.ivSearch.setOnClickListener {
-            weatherViewModel.refreshWeatherData(it.toString())
-         }
 
     }
 

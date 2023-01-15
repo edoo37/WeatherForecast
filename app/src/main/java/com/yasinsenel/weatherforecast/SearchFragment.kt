@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.orhanobut.hawk.Hawk
 import com.yasinsenel.weatherforecast.databinding.FragmentSearchBinding
 import kotlin.random.Random
 
@@ -29,6 +30,9 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Hawk.init(requireContext()).build()
+
+
         val list : ArrayList<Int> = arrayListOf()
         list.add(R.drawable.ic_2girls)
         list.add(R.drawable.ic_female_cyclist)
@@ -44,10 +48,11 @@ class SearchFragment : Fragment() {
 
         binding.apply {
             button.setOnClickListener {
-                val bundle = Bundle()
-                val text = editTextTextPersonName.text.toString()
-                bundle.putString("City",text)
-                Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_mainScreenFragment,bundle)
+                //val bundle = Bundle()
+                val cityName = editTextTextPersonName.text.toString()
+                Hawk.put("City",cityName)
+                //bundle.putString("City",text)
+                Navigation.findNavController(view).navigate(R.id.action_searchFragment_to_mainScreenFragment)
             }
         }
     }
