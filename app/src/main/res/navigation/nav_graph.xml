@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.yasinsenel.weatherforecast.MainScreenFragment"
+        android:name="com.yasinsenel.weatherforecast.view.fragment.MainScreenFragment"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.yasinsenel.weatherforecast.SearchFragment"
+        android:name="com.yasinsenel.weatherforecast.view.fragment.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action

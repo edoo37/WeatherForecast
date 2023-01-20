@@ -1,13 +1,13 @@
-package com.yasinsenel.weatherforecast
+package com.yasinsenel.weatherforecast.view.fragment
 
 import android.os.Bundle
-import android.provider.MediaStore.Images
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.orhanobut.hawk.Hawk
+import com.yasinsenel.weatherforecast.R
 import com.yasinsenel.weatherforecast.databinding.FragmentSearchBinding
 import kotlin.random.Random
 
