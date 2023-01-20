@@ -1,4 +1,4 @@
-package com.yasinsenel.weatherforecast
+package com.yasinsenel.weatherforecast.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,13 +11,13 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.orhanobut.hawk.Hawk
+import com.yasinsenel.weatherforecast.R
 import com.yasinsenel.weatherforecast.adapter.WeatherAdapter
 import com.yasinsenel.weatherforecast.databinding.FragmentMainScreenBinding
 import com.yasinsenel.weatherforecast.model.Forecastday
 import com.yasinsenel.weatherforecast.model.WeatherResponseModel
 import com.yasinsenel.weatherforecast.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
