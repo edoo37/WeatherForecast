@@ -32,19 +32,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Hawk.init(requireContext()).build()
 
-
-        val list : ArrayList<Int> = arrayListOf()
-        list.add(R.drawable.ic_2girls)
-        list.add(R.drawable.ic_female_cyclist)
-        list.add(R.drawable.ic_female_rain)
-        list.add(R.drawable.ic_husband_wife)
-        list.add(R.drawable.ic_men_summer)
-        list.add(R.drawable.ic_person_umbrella)
-        list.add(R.drawable.ic_umbrella_girl)
-
-        val calculate = list.get(Random.nextInt(list.size))
-        binding.imageView2.setImageResource(calculate)
-
+        setRandomImages()
 
         binding.apply {
             button.setOnClickListener {
@@ -57,4 +45,21 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun setRandomImages(){
+
+        val list : ArrayList<Int> = arrayListOf()
+        with(list){
+             add(R.drawable.ic_2girls)
+             add(R.drawable.ic_female_cyclist)
+             add(R.drawable.ic_female_rain)
+             add(R.drawable.ic_husband_wife)
+             add(R.drawable.ic_men_summer)
+             add(R.drawable.ic_person_umbrella)
+             add(R.drawable.ic_umbrella_girl)
+        }
+
+        val calculate = list.get(Random.nextInt(list.size))
+        binding.imageView2.setImageResource(calculate)
+
+    }
 }
